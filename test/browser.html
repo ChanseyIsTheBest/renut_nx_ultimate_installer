@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>renut_nx_ultimate_installer browser test</title>
+  <style>
+    body { font: 14px/1.5 ui-monospace, monospace; background: #07111f; color: #eef6ff; margin: 20px; }
+    .bad { color: #ff6b6b; } .good { color: #5fd27f; }
+  </style>
+</head>
+<body>
+<h1>worker.js in a browser</h1>
+<p>Run <code>python serve.py 8193 . --test-files &lt;game folder&gt; --test-out &lt;zip&gt;</code> and open
+  <code>/test/browser.html</code>. The worker makes the zip from the served folder (<code>?compile=0</code>: no DKSH cache) (read with HTTP range requests, as
+  the page reads its Files); the zip goes to the server's <code>--test-out</code> file in 8 MB writes, for
+  <code>test/check_zip.py</code>. Game data: never commit or share what it writes.</p>
+<progress id="bar" max="1" value="0" style="width: 100%"></progress>
+<div id="log"></div>
+<script type="module">
+const logBox = document.getElementById('log');
+const bar = document.getElementById('bar');
+const log = (text, cls = '') => { const d = document.createElement('div'); d.textContent = text; d.className = cls; logBox.appendChild(d); };
+
+const list = await (await fetch('/_test_list')).json();
+const entries = list.map((f) => ({ path: f.path, size: f.size, url: `/_test/${f.path.split('/').map(encodeURIComponent).join('/')}` }));
+log(`${entries.length} test files, ${(entries.reduce((n, e) => n + e.size, 0) / 1048576).toFixed(0)} MB`);
+
+const channel = new MessageChannel();
+const port = channel.port2;
+let written = 0, buffered = [], bufferedBytes = 0, writes = Promise.resolve();
+// One 8 MB array per write, sent before the next pull: a Blob per write filled Chromium's blob storage at 1.9 GB
+// (net::ERR_BLOB_OUT_OF_MEMORY; kameo-nx-installer's tests saw the same with fetched Blobs).
+const flush = () => {
+  if (!bufferedBytes) return writes;
+  const body = new Uint8Array(bufferedBytes);
+  let at = 0;
+  for (const b of buffered) { body.set(b, at); at += b.length; }
+  const offset = written;
+  written += bufferedBytes;
+  buffered = []; bufferedBytes = 0;
+  writes = writes.then(async () => {
+    const r = await fetch(`/_test_write?offset=${offset}`, { method: 'POST', body });
+    if (!r.ok) throw new Error(`write at ${offset}: HTTP ${r.status}`);
+  });
+  writes.catch((e) => { log(`write failed: ${e.message}`, 'bad'); finished(false); });
+  return writes;
+};
+let finished;
+const done = new Promise((resolve) => (finished = resolve));
+port.onmessage = async ({ data }) => {
+  if (data.type === 'chunk') {
+    buffered.push(new Uint8Array(data.buffer));
+    bufferedBytes += data.buffer.byteLength;
+    if (bufferedBytes >= 8 << 20) await flush();
+    port.postMessage({ type: 'pull' });
+  } else if (data.type === 'end') {
+    await flush();
+    finished(true);
+  } else if (data.type === 'error') {
+    log(`stream error: ${data.message}`, 'bad');
+    finished(false);
+  }
+};
+for (let i = 0; i < 4; ++i) port.postMessage({ type: 'pull' });  // as sw.js's highWaterMark
+
+const worker = new Worker('../worker.js', { type: 'module' });
+const started = performance.now();
+worker.onmessage = ({ data }) => {
+  if (data.type === 'log') log(data.text);
+  else if (data.type === 'progress') bar.value = data.fraction;
+  else if (data.type === 'start') log(`(the download would start here, about ${(data.estimate / 1048576).toFixed(0)} MB)`);
+  else if (data.type === 'done') log(`worker done in ${data.seconds} s, zip ${data.size} bytes`, 'good');
+  else if (data.type === 'error') log(`worker error: ${data.message}`, 'bad');
+};
+worker.onerror = (e) => log(`worker error: ${e.message}`, 'bad');
+const compile = new URLSearchParams(location.search).get('compile') !== '0';
+worker.postMessage({ entries, dlc: [], compile, port: channel.port1 }, [channel.port1]);
+const ok = await done;
+await writes;
+log(ok ? `TEST ZIP WRITTEN: ${written} bytes in ${((performance.now() - started) / 1000).toFixed(0)} s` : 'TEST FAILED', ok ? 'good' : 'bad');
+document.title = ok ? 'DONE' : 'FAILED';
+</script>
+</body>
+</html>

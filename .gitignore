@@ -1,0 +1,9 @@
+# renut_nx_ultimate_installer: local tooling and test outputs (game data never belongs here)
+.claude/
+__pycache__/
+*.log
+node_modules/
+wasm/src/*/build/
+test/out_*
+*.lz4b
+*.zip

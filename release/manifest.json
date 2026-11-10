@@ -1,0 +1,1073 @@
+{
+  "version": "1.0.0",
+  "builds": [
+    {
+      "edition": "Xbox 360 disc",
+      "xex_sha256": "562e25174593942b4a6425cae9afa0e45c64d3711de58cd1a6772cdd916279f1",
+      "nro": "katamari-nx.nro",
+      "nro_sha256": "22020595f193a7f7a4c29537d08a2960a55aa2960d0f746be20b04b662d2c31f",
+      "shaders": {
+        "image_sha256": [
+          "03c125828e0afbaa81d2deb66e87ac2a6a56ae67747ec771e5e9701e257a322a",
+          "04dbb623f36cdba9a2a40c7c82f1d7c710b62e728a4bd6e856bf715201f322d6",
+          "073248b1fcbe01669864ba134b1e8a800b83e78847df4bbdfde792a71dfa7ee1",
+          "0a5a56296f7c32d21f1fc0dc8e9f14e81dec6b3da41a26f9e888791f4a1da6f7",
+          "1271b9b385520f27c3c9fd64ac987be41301a4e86a781a6200710b4e4534c8c4",
+          "131c823a5e8f9bce6ff88d9c4ee5cb963c1927cd45b5ff88e408c77d0c3aa47f",
+          "1349c36b887b6521462799f7f3975327c7b69fd617957a84147f656995656cb4",
+          "19042dde98e357acb23ea58c7e046249fc8b50a7c5c645a08704bf3867498387",
+          "1e6b138950abdcb1ba3a14b64fa4eb1379b34103c04c81edd3578158adb28b62",
+          "1e9f35b58b6896812a12b4653ca295b19233dbcca3359a8ff48115079fc8d09c",
+          "1f7b8599feae2b8bf527273523d51fd0ac1347acd9db617ea81c55051026e1be",
+          "22b9e7b141118d88b77312e373a958d159b7114afc9a5b8f38e58e30a97400dc",
+          "23dd68067eaca6faa3a9c435c259eef52a4e7ea525a929c5cb3a8d1f6a881f52",
+          "2444e4ca2bcb66a9e298efafb5129b3055027acc4310ee1493ac996262de604f",
+          "260827160f0ba3e561378e8f7ec05f0faddd0bf095c432a22d2ff17d87cb17d9",
+          "286d3eb8bce4137de4ebbe4fb474baa2be048f101da86a5e0c1f80363a380a3a",
+          "2e65c16d3ab79650c5959f83fd6277efe71517e7f8f2941d055e2952d2788a02",
+          "2eb09c169283db431ea843b28a3576c34a7ee62b178e864444468ed87d9d858f",
+          "304f315d2aeaf97f0b5ea32c5a40d85573dbe9ee69d730cd137fbf3a5a6dd800",
+          "310e02826437d26df1da45b8b81a9303ed522b90a784580ac84c7a71da2fee52",
+          "39ca2abe62233a6a7edf5d2c8e76e371fdf8aeea7a9b51c9567ebe99a1121ff3",
+          "403608bc2ee6c6c98327198be077bf222f1fff26855814744b4fd94be4c1a9fc",
+          "41fa279f322a92ca75e4d6e6159a40e17f248604033641c95183657d325d51e7",
+          "47f3a3cdd1488bd049445a3656a83cc91da4abdb59f935a5893cf0d82eef5f58",
+          "4b3e3b0e98826c0f699af9ec59b1296b646e481b26fb3040187438e9d7a255aa",
+          "4bc0a60bf2ba972a4738a85b62e848015ab745736f1c89c11a44bcaf9fd1bc6d",
+          "4c0c162eb6d65be65a2b68a2181d4c3a10c9535d0aae227b61b3da6c96d43898",
+          "4cd0d1bb7aae42b6b025f38f0ea889b1337d77b67fc9e5d0c683441d1e648d4e",
+          "50bbfafc2a600698a36abd53ecaa4d76844046bc42582dfc021ac86dca8baed8",
+          "5283e394e36769523609a6828e2c2906aff79afc2c55a442887b193d48a5f88b",
+          "5928e402fb4ac54a47ea12fc0f3cbb2f024e1b86c5679dca00acd1ef73712305",
+          "5a48f970343ddb09bb03060d2ef6ef4ddc6098d8a8c45f605a22310965e86b07",
+          "5abb47d374d23af507c5b7bf347b02cd2160f58bf02297c0a661e996a4b8b949",
+          "5ce303f3168cce5b66b3b33ae2e602c05e5cf8dd7ea597d0657cc7e792990501",
+          "6395d4c8b9c951e21061d218759d723f027d42633e01ece89771e9fd7de1d8d8",
+          "63c3fdfe15624adfeda7199f9e24d104f204691dc9394549adfd8968af9a6ec6",
+          "643d48d72832ef576a537ee1eee4f42aaaf8a6ec2c2ec7b8c8ba55c4c73de7e1",
+          "646fcd6672239414b773915cd5584381e0bfe62c8dca08354d1039deeaaf19a8",
+          "67a3d5c08598d2e1e43675254af45bee6fbd6ad785fc3988fb2675c8680bb4c9",
+          "6a1efc5f321e533973e126e21ef2f42d7d8d343136569a5d1be692916f6c905a",
+          "6d1e19faaf79d5fc76ad840250423315d298a58f154f44ec53868f9618992858",
+          "6d7efb31ce5eb69a3b0b1588898abd9e9200ba9af0285a7fb47070869f63d4f3",
+          "6ed7b0a70bc74d18721b316b48999817ee4df4ed015788e2d55e2057adb6b105",
+          "6f52b1927fd7e52d135924c212fdced4cfc8588cf784561a6a02110143af20c4",
+          "70fa9ac38747c0758ac2571479df260423aa7fe8991c93f274d3d89a1cf8fcb7",
+          "71654bd1c2caf5c7fea1ff6349bf91926473bd13272bfc5b1df8bf033ad264ae",
+          "7684fdad6bfcfcbafe73f3f51404500d6c7d9ba91aa7c211f58703c74d1f1a83",
+          "799b52b727ed1cc05e809d71490b7608dd2de277f73d9195ddbaf4ee1e6a1aa9",
+          "7a74049b4877f7d01f482e5c9d9d5a63359eef832f310ba59765df5446dd38cb",
+          "7d51b1e9e348673955beeb8d27f266a297f6ad5a2c196f88a0f8cd021e32551e",
+          "7fddbb00e5cf7707493cb3970448febb101a453908e006d45d3492715275ed03",
+          "844fa2570bf4769db4b8bc01f3827840811175aeeac878e4ebf9bebf390f59e3",
+          "862f7310f510685e15b6f1b157185cb32a7ba0c484486d009a1f98a2404dd110",
+          "89f26d6e64e88c93a6d02d94c95ec6f9cb32896da1e29b3b416d200335240d34",
+          "8aa1f99ba84c320f3aa8e524d18ef0e4d5455e305b7a91874d6f5a4817bd6e12",
+          "8b330a609672fedd5f0351a1f766fbb8c456a7b8b7fc1dfb07e5b0a7e52b53d3",
+          "8bdc7a09b13b5b470c13caff2de293e6444956974848f90d7e8e7ffc7aaebedf",
+          "8de30d8ca3c168a161272f34de1560eafd3a34db60fb86d377133c566cc870e7",
+          "8e04511c22634141fcaacf7fae6c3681894ceb944ba70d5b575b4e15a91b5be5",
+          "90e32d054c349c09e60024b57def67328c1cbfa6ca690306db1bb23758a58594",
+          "96df46b4a4deac09a2f7db983cd7ca2fa6ed00c0d980740a397d4ad0cd108328",
+          "9b3fdd65c91460925720c3212b50dc74df1d83e72bd4edbf605a107f57d9a248",
+          "9c77e3dc7d8bb383c10dbf427666219f336b946452f45652ba04faaf8e0166de",
+          "9e0188652e78fc382660606eaf3b50964d8a2c092f5248db7ae74df5b153c279",
+          "9e9aad5d448a6c9bb49b60cc3d6fc578974ca736689b110ab194390fd12c2fcf",
+          "9ec9a1caa7e90a2fe868cde0ec9db3227b8e26cbbf79ed481663815502b87f3b",
+          "a01287633e67b325618d2660e9e4d8dc88344c3e43436b5bcda5fb8acff8ef3d",
+          "a05431f875cba103c452c9afb2de0ee882a2b7e013d36b0256368b38b9730036",
+          "a2a2628c75e7bf3ebee5efdced5f70df9f9286dc7aad250d48881f0f1bc7187a",
+          "a769588556b8fdd21561a0299bf1347b6113455c8df559af2b7e0e656b2e809a",
+          "abb88aed10deacef6c43d22382b56f3c7160714a1e937514669889c295ed50f0",
+          "ac2ee4960cccf6f24bb50700bf7af040ec337d93ace03113482ce0633bb5ffed",
+          "b03018b6edfe2913ddcb2f78e61876725dc2e2607e50844bc5f013093cec799f",
+          "b2fd2db169f81a1a9246b7adf33bab8db2664337ba2cc6ec3b0603a48ae6cd46",
+          "b57040c388de82cd9350a574d190c737d74324d471e079a22559ea68d7714aed",
+          "b58e99ebf1fed62d0040fd1ad52750b47f191243e5e7b9033a3d9ad2e4443a6b",
+          "bbfb346bd5bf6f752799270625bf8ff59d0d907948f061a3e227f0ebc4610eeb",
+          "bc9260a2faac688b6463246af113160b457a8be49270e3068c540329fa8b09b2",
+          "c0523631906f449ed00bb4a6b25678de06b30dbd2fc988afef4c6e63d75d88e3",
+          "c0ec81c604bd60042ada4276c629882ed60985d27c815a1e23dd70a2caf32c93",
+          "c20dfee809c311161590121c1b745bc5fbb51dcc631c1caf29029a6fc6a1ee26",
+          "c7ecb609ed6571daa2884c62770405dab86551a7f41016cc5713871ee6e9dd47",
+          "cb49434f245aae593ede07b59f273c68a1ee1832607b0300bca8ff4506b3fc71",
+          "cbdf4a0f301272f56bb7ce4919a330586639be478f682e7e37014ae1d0c89f1a",
+          "cc7e786b25f08245a989c5ba42752b5a50c01f34ce0237f9b9f79fd73cdfed67",
+          "d264fee451665f8b4c3118dd905f37ff221c64a835f8876f984468e38e20605a",
+          "d50f30feebcbf86602811d116bf25d4b70bf1cc9787d0a41fddcb7713e84becc",
+          "d59a007c1c06935492bde09e01b972e444b485712e7902cc773e9a06f3120950",
+          "d71ab69f3fd0de31b864971c2712448a7f03e32624302b3f518207ae290b7d28",
+          "da49acafb85dd3a7e48a1c650171d142fe913e505abf9b66296fd0afb80a4ee0",
+          "def43a628fa681483e6245ed93508e35a2b32194bb1590729b02b2fb2cb53420",
+          "e059a5483491371a8c64934a01a0256dbba8b530b665baad0332ce24484e03b1",
+          "e12fcff91fa6d714d483db1ebdf20018dd039c51becc1116c79e78c713e77ac3",
+          "e14dda20e14e94b078e9f1ae70af8605e0039e3e7c0b8df52b69a35893de9a80",
+          "e18b43d71f9c1e05b3226595cdbd7bb1a6693795a5dec180eae9615781d8829e",
+          "e2ad3bdac68fe5b67ebae8d78368e0d304e48ff891c1eb115fa4b037a3a3edcb",
+          "e50f9935dda2f07d7116b582a7f86700252f2487e2b70ca96858e5998b8b3655",
+          "e8ba8b1b6e00875e700c61868658dcd3ec7dd0a64a6428cfe359884beaa50f73",
+          "e92a70d5182d0802af1230592a337582b9eb1c5f592719a15d9cd192a10cd31b",
+          "ea8295aecc661479176c3f940bd15aa39f3673534a71a371e9ccf6e44babfc97",
+          "ebb814449e4331040fd40e24dc7389414fd1da3b263b834a7d4900c227ca01a5",
+          "ec4af5910961ac6ead1bd1b7a6b5cfd8124f4ae05aa92b0387dbe1c6c88852b6",
+          "ecf8ea63a3ecd8fee5d39c5b34eec7a89e2634d3c00f48760b2062f93a4aece6",
+          "eec8eacc09fd4c78ce5961e067c19aba6e9aff2bccfc559f0f039a22865109c7",
+          "f2024dcb99d0d055eb236b4216ac886e98964cd06dbf359bc8fc4a351be8f1fb",
+          "f3a5519fc3f0393d2720613b7a032cf0b5bb0ef4f61a1d229dbea07359fa8f43",
+          "f8be1036e690c45acf514ce30168bf87a78b4a0d8ff0a083c7f0ac6f6c16a79e",
+          "fa075ceaef60b92abb2b380c3409a68ad5e3ca5d89a4893d3bc8be1663fb5b9f",
+          "fa4984d1f35ae6c2a118980d91b2be6da7678b8931e7b6a1a57aacd4ad95b2af",
+          "fc627e55710c9245480a58c205076b0c218e8b750ed06ad9c13128d1e34ce805",
+          "ffd44ff0e82ed60b4dda013f8af75451547c24653f78546c64510b3e08fcbdc8"
+        ],
+        "records": [
+          {
+            "file": "d02.dat",
+            "offset": 17559552,
+            "stored": 1883832,
+            "size": 9580128,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 9539335,
+                "length": 252,
+                "sha256": "2ce1f82a74b3a6bbb8866cd79ab210887dd263ea4894fa3ca585b061d171f2d6"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 34889728,
+            "stored": 334872,
+            "size": 757488,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 249734,
+                "length": 340,
+                "sha256": "803e5cb6ed52a0f362a513dab0ba8ffa8b5502120bcdd8e5d65276adc14bbec6"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 35225600,
+            "stored": 1270944,
+            "size": 3951040,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 11232,
+                "length": 340,
+                "sha256": "6b9542a497432f60a854907fca47645840f62e5f6cedb5112c800f711f445c21"
+              },
+              {
+                "at": 2703004,
+                "length": 324,
+                "sha256": "d5be8f8e5fc0bcac0ad6e5ee990eb0a63eaf7320faef6d0ce40c29673d260871"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 59432960,
+            "stored": 18368,
+            "size": 103488,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 14142,
+                "length": 328,
+                "sha256": "6ed09a9f9f4f7fddc839d48540658a31f9c8d811c0532fb6bcd1f5aaa337e784"
+              },
+              {
+                "at": 14470,
+                "length": 312,
+                "sha256": "82d6d5da4cd57be6fbf73a5a964dd7d4f3c37987eb9ed4e28f547946065c2e39"
+              },
+              {
+                "at": 15394,
+                "length": 992,
+                "sha256": "2e8961ef83050172eadaa472232a19b56389eca85188af63170204b8945694be"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 59981824,
+            "stored": 458224,
+            "size": 1400880,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 635918,
+                "length": 240,
+                "sha256": "33240e8c886af99d389858dd8b230f66be0f53c47b8e1428a5296187af02495a"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 60706816,
+            "stored": 26592,
+            "size": 107648,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 8779,
+                "length": 272,
+                "sha256": "62c0a6c74eac1ce48e13b23a7ffafe2a72a0cb8cd38d35a4099fb42a9509715d"
+              },
+              {
+                "at": 9051,
+                "length": 156,
+                "sha256": "926982a343e20a71228226276f2de243ad91ae019f560d6e404c4f9d6540852c"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 60919808,
+            "stored": 226672,
+            "size": 1175516,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 248244,
+                "length": 304,
+                "sha256": "46c33d48343eb46177d34be1d18ec44ebcdae18c10f739a5aca6b04f07df8b5a"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 82395136,
+            "stored": 30392,
+            "size": 30392,
+            "codec": "raw",
+            "containers": [
+              {
+                "at": 27581,
+                "length": 512,
+                "sha256": "29fdc20eaa0c053d1bb080cc3b42bd59b43e82728d9ccee4850f409f4c8734fd"
+              },
+              {
+                "at": 28093,
+                "length": 548,
+                "sha256": "5c09ae14cb4c3e48ad4eef2ba87e09ac29549c5bfba4af91a0425d0bd8bc9bdb"
+              },
+              {
+                "at": 28641,
+                "length": 288,
+                "sha256": "e79a515ff9840c4a36788a8b484f2345b3c39d989e521d85cceea0ed25da5122"
+              },
+              {
+                "at": 28929,
+                "length": 376,
+                "sha256": "1f7130db8727167f94505f8c002608975af15fdbc54507120a632bc7a489eefe"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 164577280,
+            "stored": 29724,
+            "size": 29724,
+            "codec": "raw",
+            "containers": [
+              {
+                "at": 14883,
+                "length": 284,
+                "sha256": "87ac3f0bba677b539b255b7ee8d0a1d0cdff807df4d7441b572bb838cd69a813"
+              },
+              {
+                "at": 15167,
+                "length": 156,
+                "sha256": "85bb3b6272f5b86db2e125162fa3ab92796edeb639d320e116d0a87429f25193"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 307941376,
+            "stored": 9360,
+            "size": 34532,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13201,
+                "length": 588,
+                "sha256": "54fbaeb6243fffb700b35daca6f8c746ca1054457703354a4b68d259e2979160"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 308697088,
+            "stored": 4440,
+            "size": 11056,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 9264,
+                "length": 272,
+                "sha256": "3de584f0c075ab0a5d0ee0636aefc07a6885d4e9e63e47ae596e7915d520fba5"
+              },
+              {
+                "at": 9820,
+                "length": 156,
+                "sha256": "52d876c52c1a638a56e6853efc96a3e6d64b488c711a9639b7bdd201c14f65ee"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 308715520,
+            "stored": 5464,
+            "size": 13472,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 11418,
+                "length": 240,
+                "sha256": "31bbdecc167f720855e5cba8b2417fbf9fcb4109562e1923526e18f619e232cb"
+              },
+              {
+                "at": 12914,
+                "length": 532,
+                "sha256": "26a77af5a94d8c7d532c02def2b1365090ea00068bdb5c8a8c1be366d7f3b3c2"
+              }
+            ]
+          },
+          {
+            "file": "d02.dat",
+            "offset": 309571584,
+            "stored": 10504,
+            "size": 34448,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13121,
+                "length": 584,
+                "sha256": "954b1e0be2a10eb4e2cdccd360d63a64fd892c8b76c55b8a45a03f0dfe76700c"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 655360,
+            "stored": 7888,
+            "size": 24944,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 12729,
+                "length": 972,
+                "sha256": "2c20ab0f948c6694a325fd145e8714e4961685dd0cc6e5ff29e12fd13b422bb7"
+              },
+              {
+                "at": 13701,
+                "length": 304,
+                "sha256": "c1b26d733ff9844620faf028a5e9c18069adf9f2a1b42d4d08de25960ab9eee9"
+              },
+              {
+                "at": 14133,
+                "length": 392,
+                "sha256": "04f8eeb95c0267eff5032015418781051cca09614bcea40a7c3c6123988102c9"
+              },
+              {
+                "at": 15481,
+                "length": 1008,
+                "sha256": "b0f59bd39f74d99d6aa504ec48d167555937464c6fe341b4a63c09c676af93f4"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 19505152,
+            "stored": 17984,
+            "size": 91296,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13985,
+                "length": 956,
+                "sha256": "467cb02078a88b777e237fc9d6fe89ffbcae1adb71f13d6c5465ff4bfaf12551"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 29016064,
+            "stored": 15104,
+            "size": 84752,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13784,
+                "length": 1056,
+                "sha256": "a986ef02b8ec2ea7f7571771c0008651e63c5a524012a345bc6e6c3f6dfc270a"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 50268160,
+            "stored": 87176,
+            "size": 353056,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 114835,
+                "length": 1004,
+                "sha256": "192e8807dc32b1a26cb185d30c1769a189edb1ce11b7cc909c6a3395886cf8ea"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 58394624,
+            "stored": 5512,
+            "size": 15648,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13433,
+                "length": 304,
+                "sha256": "87faf49197dc42f9b52e7917ee16a08eaf7ed6c8f34af9c43619810db81696d7"
+              },
+              {
+                "at": 13753,
+                "length": 972,
+                "sha256": "c41d60d3df7436d1c19e9bd8cc349395d68496aa68b280b171afddabe1345008"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 59224064,
+            "stored": 16976,
+            "size": 91120,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 19716,
+                "length": 1060,
+                "sha256": "bcc6bce9135fe1ba8b5af5da343486e71a80ef90034ee51c239fb4829fea8f4b"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 63064064,
+            "stored": 18944,
+            "size": 91248,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 15811,
+                "length": 604,
+                "sha256": "100637f355489a278545593b76527cab02904901fb828e0273a362660e2ac419"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 76544000,
+            "stored": 25384,
+            "size": 122144,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 120604,
+                "length": 1528,
+                "sha256": "866e262c076f18ee3f4d2472245cf0f444e1967e2579b55ff70877fa0d1ba795"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 79616000,
+            "stored": 25920,
+            "size": 86368,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 49658,
+                "length": 920,
+                "sha256": "3d2ca9d187bbe25976484857ea56361076f4b616be2e4d8e17e3d3a3b23d539d"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 85288960,
+            "stored": 16320,
+            "size": 86032,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10964,
+                "length": 392,
+                "sha256": "9a8d3fe076b1f5bdbc9d9f2493e5addaec95c37a18a03bdfb98872fba5e9a4bb"
+              },
+              {
+                "at": 11356,
+                "length": 1008,
+                "sha256": "674238f9d8f5a445d868499cc027f772fd9938d56db87cf470f06e072850aad0"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 87627776,
+            "stored": 9400,
+            "size": 27984,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10929,
+                "length": 404,
+                "sha256": "bb3bc1d7ad233831e31049d8363b3b1482a79dd13fc97a596dc71258afd52f60"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 88651776,
+            "stored": 22840,
+            "size": 94128,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 13738,
+                "length": 1060,
+                "sha256": "b1bb19268405db3432f412a9080756eb6611a4c2bdc3fe8c2cca915bd4a03b2a"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 89333760,
+            "stored": 6048,
+            "size": 16016,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10496,
+                "length": 304,
+                "sha256": "8999aad3f7f8313537d6f321a3f9f0beadd986e4ab5e0682e6d53e5525122d55"
+              },
+              {
+                "at": 11464,
+                "length": 956,
+                "sha256": "b8c591fef1977cc8f1b49f738f42e98a74d92da41f8fecc46429d945e6df6b0d"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 89339904,
+            "stored": 5928,
+            "size": 15616,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10386,
+                "length": 956,
+                "sha256": "042c9bdbaa102250ce239fe078017928fa33519ecacdad0f330afb16e70bf850"
+              },
+              {
+                "at": 11342,
+                "length": 316,
+                "sha256": "926a68318c79875020cd095012f2a956c8836a7a6f6c6c07a16a7b130a192a99"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 89417728,
+            "stored": 6456,
+            "size": 16976,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 11107,
+                "length": 992,
+                "sha256": "c1a03bc560919e92edb1073aa6644f330383de0105108e9ade0b288ba6a5530b"
+              },
+              {
+                "at": 12099,
+                "length": 404,
+                "sha256": "9ae7301eaec95e4c17557e49b3c16f86670254fe8129f4bd644d9d2bbd993ca6"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 96067584,
+            "stored": 34488,
+            "size": 140992,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 124743,
+                "length": 1524,
+                "sha256": "425e7eb14317037d304a0a072c520abb44cd00a4eb76c78c1b8ef8d05d67679e"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 96102400,
+            "stored": 36016,
+            "size": 144048,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 107737,
+                "length": 1472,
+                "sha256": "98b3cbfd60a0d4a7cf3636f72fbc33725858e1f3e65e7fc44b89c60c524614a0"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 96139264,
+            "stored": 19440,
+            "size": 66480,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 54292,
+                "length": 1492,
+                "sha256": "99d92cc8f26ae59097d3384fcb6390bdf1783b57cbca3419e4b2bbdd09c32a32"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 96190464,
+            "stored": 29024,
+            "size": 91296,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 71453,
+                "length": 936,
+                "sha256": "affb1304eaf71e1bfb22db9c438117e9309f8601c3921a37048c98a4cb013f79"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 96339968,
+            "stored": 28448,
+            "size": 100432,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 74318,
+                "length": 1492,
+                "sha256": "7e04564a1cedc195defca105ecaca922562eb9fc90f8a314204e4cc90d57a835"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 97816576,
+            "stored": 20200,
+            "size": 81312,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 72250,
+                "length": 1544,
+                "sha256": "0d42179440cbfe6e2c1ace03d1f26dfb2798a8cd24a7a239427d43c740e074f4"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 97921024,
+            "stored": 11000,
+            "size": 40112,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 17276,
+                "length": 1076,
+                "sha256": "055d0de6406b1d3c6fb9e3322dd4d23c77dabe939b2a5282b7908fe094a8a25e"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 104439808,
+            "stored": 42080,
+            "size": 154784,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 48499,
+                "length": 1060,
+                "sha256": "94653006d7777af8559445edd7e74183f5add41c5636db1c457a51f0744f9b1f"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 107925504,
+            "stored": 75504,
+            "size": 149760,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 38077,
+                "length": 984,
+                "sha256": "2f1b56f81af735d91e3f76937d52e99be3188b8f798d297af9f3e5c721f38298"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 111147008,
+            "stored": 8128,
+            "size": 23872,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 17065,
+                "length": 312,
+                "sha256": "6d90f5fed0446ce942e2bc991c7216eb85db1f982d4b314ca5973ca58271ed35"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 117127168,
+            "stored": 23480,
+            "size": 70384,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 57768,
+                "length": 916,
+                "sha256": "6086b9e4edadedb59b846261de5123e0cb36ba23519b058d1e1b26021c3d61f0"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 125095936,
+            "stored": 8520,
+            "size": 30912,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10844,
+                "length": 992,
+                "sha256": "a25aee7d51a68adbb9ac1327cdc47d39c620913d8872503adc3cc7515ccef447"
+              },
+              {
+                "at": 11852,
+                "length": 392,
+                "sha256": "1591f23c62e5602c78cee6625f0e3d1f9f7aac2552adcf388d6ae2bc42e2a1cd"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 126095360,
+            "stored": 18568,
+            "size": 93376,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 16259,
+                "length": 584,
+                "sha256": "807250095ea8d5b4d5289ee695a75866eb77b4488e8be0bd3c1677bb155298f8"
+              },
+              {
+                "at": 16859,
+                "length": 528,
+                "sha256": "c8efb235899d0a3d202f38cee7c8b0135ad905955b736f72cd40a3b287949442"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 126203904,
+            "stored": 47088,
+            "size": 90400,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 17708,
+                "length": 584,
+                "sha256": "08e7cd0cc5378104ee72c383580481e8b7dfcbae2fa1747cc7e32ecf123f2260"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 133775360,
+            "stored": 191624,
+            "size": 1001104,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 23860,
+                "length": 292,
+                "sha256": "75bf64fc8f843c5b20478c28cc093c3d50a24f9fee9068b5769dfc9ac93f763f"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 133967872,
+            "stored": 7984,
+            "size": 32368,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10344,
+                "length": 548,
+                "sha256": "0a87617a408505074a179676ba7e3a6780a6a4700c1a554a4763dba84614496c"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 134404096,
+            "stored": 12240,
+            "size": 66592,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10673,
+                "length": 528,
+                "sha256": "92b6087d316d6464b503e5104891f1845fae9b2714e4dd524074b11f78dbedbd"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 137699328,
+            "stored": 8144,
+            "size": 22704,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10824,
+                "length": 388,
+                "sha256": "2738841ada74aeb9a7fc09a60aef21d93003d0e216ea44a37e0c589be8abaaa1"
+              },
+              {
+                "at": 11240,
+                "length": 528,
+                "sha256": "10b32c283141e738b1dd03f54877649f9c273fc71e19740247beda4034ea8fbb"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 139483136,
+            "stored": 20880,
+            "size": 95696,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 12140,
+                "length": 988,
+                "sha256": "d5c17688a7740ed5ebe67bfb3a3799d57d92cf98a927fafbe936ef0148660e92"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 148738048,
+            "stored": 11176,
+            "size": 50864,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10668,
+                "length": 388,
+                "sha256": "f051f2a8d73f724032fb2df0f86e68f34c2b607f3d33e46c8df4ffab3c627cd2"
+              },
+              {
+                "at": 11092,
+                "length": 532,
+                "sha256": "4463c95180e0245f91c1a0e71dd08c5e795e25acc20442c84089699146f44570"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 151508992,
+            "stored": 6568,
+            "size": 18992,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 10216,
+                "length": 376,
+                "sha256": "78a854f6e469546eef0f23ddb1da1f2d3e4699cca6b6ec3bdd3bbe8aebb5eb72"
+              },
+              {
+                "at": 12016,
+                "length": 532,
+                "sha256": "2e365c544cdc6f0b3d5fff12d050b058139fb31c49277802dec542f3eaea6fd8"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 153278464,
+            "stored": 25784,
+            "size": 86032,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 49666,
+                "length": 944,
+                "sha256": "b981145f1543ce77709b45c7d8ce1d92970d3d1e6154647543c2962d6fbd9429"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 154406912,
+            "stored": 6616,
+            "size": 18176,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 11682,
+                "length": 376,
+                "sha256": "d8ff78750f2035a17aa2e0dff494c12948af72d8109f7922b646a9fd78be0b15"
+              },
+              {
+                "at": 12678,
+                "length": 588,
+                "sha256": "ffc18fcede821ee1d80078c53ec6a1d7e7204fb50e9a8f98abf7330c290a4cc5"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 154556416,
+            "stored": 62392,
+            "size": 256704,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 189075,
+                "length": 952,
+                "sha256": "7578fef58ee77dc026c28ccda472b0c35c456dd8dcd1b516d617652cb014de50"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 154619904,
+            "stored": 80288,
+            "size": 406608,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 321629,
+                "length": 916,
+                "sha256": "ddd44df1cfe8d19392d97f61d9215775306ae7fcc03fe039d9b52500e1cc4538"
+              },
+              {
+                "at": 322921,
+                "length": 920,
+                "sha256": "ef1a131032e27125919170c87852252e1f412185219369ab3592d6db4162f36b"
+              }
+            ]
+          },
+          {
+            "file": "d03.dat",
+            "offset": 157173760,
+            "stored": 17952,
+            "size": 90848,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 12876,
+                "length": 288,
+                "sha256": "2952d510416d14eb38ea7a607b7038487f1f334f9307dada4456ca481ac8cb54"
+              },
+              {
+                "at": 13196,
+                "length": 496,
+                "sha256": "28baad1ff265b58bd37cd15f67304d6af9e2ffeec5a7887447745d87fcf44cd3"
+              }
+            ]
+          },
+          {
+            "file": "d05.dat",
+            "offset": 1660928,
+            "stored": 4640,
+            "size": 13080,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 11548,
+                "length": 324,
+                "sha256": "9ff132ec360bad6e69bf31c62fd426493ff5f64a39473cfd212c00ae729ff96f"
+              },
+              {
+                "at": 11872,
+                "length": 652,
+                "sha256": "b6d90f2ba130439acab3bda549ca0125fda49f3cb6634bd896698fb39bce6ada"
+              }
+            ]
+          },
+          {
+            "file": "d05.dat",
+            "offset": 48832512,
+            "stored": 13336,
+            "size": 49832,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 31917,
+                "length": 708,
+                "sha256": "6d226ff7b02c64ed1487e49e7e6394b07fb5db7aeb8bbb83f2d4ab1d746bd7c4"
+              }
+            ]
+          },
+          {
+            "file": "d05.dat",
+            "offset": 87392256,
+            "stored": 883088,
+            "size": 3966020,
+            "codec": "cpdb",
+            "containers": [
+              {
+                "at": 1891883,
+                "length": 240,
+                "sha256": "7a1a58011d42e3791bc380123829b6312eac1318865174915933f190ffd6bf75"
+              }
+            ]
+          }
+        ]
+      },
+      "variants_sha256": "54171931067239fa8eb88c65054830e7d3195c84d71131f9e2dfd44e11d49bb7",
+      "files": [
+        {
+          "path": "pipeline_list.bin",
+          "source": "pipeline_list.bin",
+          "with_cache": true,
+          "sha256": "db4eab58c407d01eb15edbb9f3714b0d0df2557ab48f07063804b7ec1e5b5db7"
+        }
+      ],
+      "deko3d_glsl_sha256": "cf5898433908eb2a566b4b42ec4afcf4550d725973dbde7ab03fb5fb51c00f29",
+      "deko3d_shaders_sha256": "2ec88d8e01fcb9b9d75651e8942bab800122610eb356da82eb5de13c26155422"
+    }
+  ],
+  "shader_common_sha256": "a83bef3eb4f1e067f54b49dc1f855d25e82e611be13955214f2cedec49c0b7df"
+}

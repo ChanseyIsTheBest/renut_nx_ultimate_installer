@@ -1,0 +1,16 @@
+{
+  "title": "Beautiful Katamari",
+  "package": "katamari-nx",
+  "nro": "katamari-nx.nro",
+  "shaders": true,
+  "lz4": ["d0[2-5]\\.dat"],
+  "skip": ["\\$SystemUpdate/.*"],
+  "needs": ["d02\\.dat", "d03\\.dat", "d04\\.dat", "d05\\.dat"],
+  "dlc": true,
+  "texts": {
+    "game": "Your Xbox 360 disc of Beautiful Katamari as an <code>.iso</code>, or the folder it was extracted to (with <code>default.xex</code> and <code>d02.dat</code>-<code>d05.dat</code>).",
+    "dlc": "The game's downloadable content, as the Xbox 360 packages you have (<code>LIVE</code> or <code>PIRS</code> files), or a folder of them. The game installs them at its first start.",
+    "settings": "The game writes its settings file, <code>katamari.toml</code>, at its first start.",
+    "footer": "Beautiful Katamari is a trademark of Bandai Namco Entertainment. Not affiliated with or endorsed by Bandai Namco, Microsoft or Nintendo."
+  }
+}
