@@ -59,7 +59,7 @@
   },
   "texts": {
     "game": "Your Xbox 360 disc of Beautiful Katamari as an <code>.iso</code>, or the folder it was extracted to (with <code>default.xex</code> and <code>d02.dat</code>-<code>d05.dat</code>).",
-    "dlc": "The game's downloadable content, as the Xbox 360 packages you have (<code>LIVE</code> or <code>PIRS</code> files), or a folder of them. The game installs them at its first start.",
+    "dlc": "The game's downloadable content, as the Xbox 360 packages you have (<code>LIVE</code> or <code>PIRS</code> files), or a folder of them. The game reads them in place from <code>dlc/</code>.",
     "settings": "The game writes its settings file, <code>katamari.toml</code>, at its first start.",
     "footer": "Beautiful Katamari is a trademark of Bandai Namco Entertainment. Not affiliated with or endorsed by Bandai Namco, Microsoft or Nintendo.",
     "movies": "Re-encode the 6 movies to H.265 (recommended: 302 MB become about 115 MB, and the Switch's video hardware plays them). Needs a browser with an H.265 encoder (Chrome or Edge on a recent graphics card); without one, or unticked, the original WMV movies are kept.",
