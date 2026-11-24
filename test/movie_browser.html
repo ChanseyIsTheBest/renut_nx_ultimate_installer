@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>movie test</title>
+<!-- renut_nx_ultimate_installer (2026-11-23): one movie of the served game folder re-encoded to H.265 by the page's own
+     code (lib/movies.js: wasm/wmv3, the browser's VideoEncoder, lib/asf.js), saved through serve.py's --test-out:
+       python serve.py 8193 . --test-files <game folder> --test-out <out.wmv>
+       open http://127.0.0.1:8193/test/movie_browser.html?file=data/movie/prolog_us.wmv[&fraction=0.35]
+     The title becomes DONE or FAILED; test/movie_check.mjs then checks the file. Game data: never commit or share it. -->
+<pre id="out"></pre>
+<script type="module">
+import createWmv3Module from '../wasm/wmv3.mjs';
+import { canEncodeHevc, reencodeMovie } from '../lib/movies.js';
+
+const out = document.getElementById('out');
+const log = (t) => { out.textContent += t + '\n'; };
+try {
+  const query = new URLSearchParams(location.search);
+  const file = query.get('file'), fraction = Number(query.get('fraction') || 0.35);
+  log(`H.265 encoder: ${await canEncodeHevc()}`);
+  const r = await fetch(`/_test/${file}`);
+  if (!r.ok) throw new Error(`${file}: HTTP ${r.status}`);
+  const bytes = new Uint8Array(await r.arrayBuffer());
+  const wmv3 = await createWmv3Module({ print: () => {}, printErr: () => {} });
+  const t0 = performance.now();
+  const res = await reencodeMovie(bytes, wmv3, { fraction, gop: 120 });
+  if (!res.bytes) throw new Error(`kept as WMV: ${res.why}`);
+  for (let at = 0; at < res.bytes.length; at += 8 << 20) {
+    const part = res.bytes.subarray(at, Math.min(res.bytes.length, at + (8 << 20)));
+    const w = await fetch(`/_test_write?offset=${at}`, { method: 'POST', body: part });
+    if (!w.ok) throw new Error(`write: HTTP ${w.status}`);
+  }
+  log(`${file}: ${bytes.length} -> ${res.bytes.length} bytes, ${res.frames} frames, ${Math.round(res.kbps)} kbit/s, ` +
+      `${((performance.now() - t0) / 1000).toFixed(0)} s`);
+  document.title = 'DONE';
+} catch (e) {
+  log(`FAILED: ${e.message || e}`);
+  document.title = 'FAILED';
+}
+</script>

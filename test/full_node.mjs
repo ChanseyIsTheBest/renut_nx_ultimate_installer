@@ -1,6 +1,10 @@
 // renut_nx_ultimate_installer: the page's whole build (lib/install.js) in Node, on a game folder, into a zip:
 //   node test/full_node.mjs <game folder> <out.zip> [--dlc=<folder>] [--no-compile] [--threads=N] [--glsl-threads=N]
 //        [--native-glsl=<the port's glsl_opt folder>] [--reference] [--update=<the title update's package or folder>]
+//        [--opus] [--no-audio] [--no-movies]
+// --opus (2026-11-23): game.json's audio re-encoded with ffmpeg's libopus (test/opus_node.mjs; the page uses the
+// browser's encoder); without it Node has no Opus encoder and the sounds are packed as they are. The movies' H.265
+// needs the browser's VideoEncoder: Node keeps them as they are (ZXC-packed by game.json's zxc list).
 // --update (blur-nx, 2026-11-18): the title update game.json names, as the player gives it (lib/update.js).
 // --native-glsl counts the shaders whose GLSL is the native chain's byte for byte (the rest differ by DXC's version:
 // the page's DXC is v2025.1, the native build's 1.8.2407). --reference writes the shader files' SHA-256 into the build's
@@ -14,6 +18,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildPackage, findBuild } from '../lib/install.js';
 import { updateFromPackage } from '../lib/update.js';
 import { glslMaker, uamCompile, workerPool } from '../lib/pool.js';
+import { CODECS } from '../lib/lz4b.js';
+import { encodeOpusFfmpeg } from './opus_node.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
@@ -53,9 +59,11 @@ async function tool(script, count, wrap) {
   const workers = await Promise.all(Array.from({ length: count }, async () => {
     const w = new Worker(path.join(here, script));
     const ready = await new Promise((resolve, reject) => { w.once('message', resolve); w.once('error', reject); });
-    return { post: (m, t) => w.postMessage(m, t), onMessage: (cb) => w.on('message', cb), w, version: ready.version };
+    return { post: (m, t) => w.postMessage(m, t), onMessage: (cb) => w.on('message', cb), w, version: ready.version,
+             zxcVersion: ready.zxcVersion };
   }));
-  return { run: wrap(workerPool(workers)), version: workers[0].version, stop: () => workers.forEach((x) => x.w.terminate()) };
+  return { run: wrap(workerPool(workers)), version: workers[0].version, zxcVersion: workers[0].zxcVersion,
+           stop: () => workers.forEach((x) => x.w.terminate()) };
 }
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -73,8 +81,13 @@ const tools = {
   xexp: game.shaders && game.update ? await (await imp('xexp.mjs'))(quiet()) : null,
   startGlsl: (n) => tool('glsl_worker_node.mjs', n, glslMaker),
   startUam: (n) => tool('uam_worker_node.mjs', n, uamCompile),
-  startLz4: (n) => tool('lz4_worker_node.mjs', n, (pool) => (bytes, level) =>
-    pool.run({ bytes, level }, [bytes.buffer]).then((r) => r.bytes)),
+  // 2026-11-23: LZ4 and ZXC (pack_worker_node.mjs), the re-encodes' decoders, and ffmpeg's libopus for the Opus (Node
+  // has no WebCodecs: the movies stay as they are here; --opus re-encodes the sounds through test/opus_node.mjs)
+  startPack: (n) => tool('pack_worker_node.mjs', n, (pool) => (bytes, codec) =>
+    pool.run({ bytes, codec, level: CODECS[codec].level, block: CODECS[codec].block }, [bytes.buffer]).then((r) => r.bytes)),
+  loadWmv3: async () => (await imp('wmv3.mjs'))(quiet()),
+  loadXma: async () => (await imp('xma.mjs'))(quiet()),
+  ...(flag('opus') ? { encodeOpus: encodeOpusFfmpeg } : {}),
 };
 const fetchRelease = async (name, hash) => {
   const bytes = new Uint8Array(fs.readFileSync(path.join(root, 'release', name)));
@@ -104,6 +117,7 @@ else if (updateAt) {
 }
 const report = await buildPackage({
   game, manifest, files, dlc: dlcDir ? folderFiles(dlcDir) : [], update, fetchRelease, tools, sink, compile: !flag('no-compile'),
+  options: { movies: !flag('no-movies'), audio: !flag('no-audio') },
   events: {
     log: (t) => console.log(`${stamp()} ${t}`),
     progress: (f) => { const now = performance.now(); if (now - shown > 20000 || f === 1) { shown = now; console.log(`${stamp()} ${(100 * f).toFixed(0)} %`); } },

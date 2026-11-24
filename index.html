@@ -96,9 +96,21 @@
     <label class="option" id="compile-row"><input id="compile" type="checkbox" checked>
       <span>Compile the shaders for the Switch here (recommended: the game starts and plays without compile stutters).
         Unticked, the Switch compiles each one the first time the game draws with it.</span></label>
+    <!-- 2026-11-23 (vivapinata-nx-installer's options): the re-encodes of game.json "movies" and "audio" -->
+    <p class="note" id="reencode-note" hidden>The re-encodes are lossy (smaller files, a little less quality) and optional:
+      untick either one to keep the game's original movies or sounds (packed losslessly, as every file is; the port plays
+      the originals as before).</p>
+    <label class="option" id="audio-row" hidden><input id="audio" type="checkbox" checked>
+      <span id="audio-text">Re-encode the music and voices to Opus (recommended). Needs a browser with an Opus encoder
+        (Chrome, Edge or Firefox); without one, or unticked, the original sounds are kept.</span></label>
+    <label class="option" id="movies-row" hidden><input id="movies" type="checkbox" checked>
+      <span id="movies-text">Re-encode the movies to H.265 (recommended: the Switch's video hardware plays them). Needs a
+        browser with an H.265 encoder (Chrome or Edge on a recent graphics card); without one, or unticked, the original
+        movies are kept.</span></label>
     <button id="create" class="primary" disabled>Create the zip</button>
-    <p class="note">The shaders are made from your game's own files on all of this computer's cores, and the large archives
-      are packed with LZ4 (the game reads them as they were). The zip downloads while it is written.</p>
+    <p class="note">The shaders are made from your game's own files on all of this computer's cores, and the game's files
+      are packed on all of them with LZ4 or ZXC (the game reads them as they were). The zip downloads while it is
+      written.</p>
     <progress id="bar" max="1" value="0" hidden></progress>
     <div id="log" role="log" aria-live="polite"></div>
   </section>

@@ -11,7 +11,7 @@
 <body>
 <h1>worker.js in a browser</h1>
 <p>Run <code>python serve.py 8193 . --test-files &lt;game folder&gt; --test-out &lt;zip&gt;</code> and open
-  <code>/test/browser.html</code>. The worker makes the zip from the served folder (<code>?compile=0</code>: no DKSH cache) (read with HTTP range requests, as
+  <code>/test/browser.html</code>. The worker makes the zip from the served folder (<code>?compile=0</code>: no DKSH cache; <code>?movies=0</code>, <code>?audio=0</code>: no re-encodes) (read with HTTP range requests, as
   the page reads its Files); the zip goes to the server's <code>--test-out</code> file in 8 MB writes, for
   <code>test/check_zip.py</code>. Game data: never commit or share what it writes.</p>
 <progress id="bar" max="1" value="0" style="width: 100%"></progress>
@@ -91,8 +91,11 @@ worker.onmessage = ({ data }) => {
   else if (data.type === 'error') log(`worker error: ${data.message}`, 'bad');
 };
 worker.onerror = (e) => log(`worker error: ${e.message}`, 'bad');
-const compile = new URLSearchParams(location.search).get('compile') !== '0';
-worker.postMessage({ entries, dlc: [], update, compile, port: channel.port1 }, [channel.port1]);
+const query = new URLSearchParams(location.search);
+const compile = query.get('compile') !== '0';
+// 2026-11-23: ?movies=0 / ?audio=0 untick the re-encodes (game.json "movies", "audio"), as the page's options
+const options = { movies: query.get('movies') !== '0', audio: query.get('audio') !== '0' };
+worker.postMessage({ entries, dlc: [], update, compile, options, port: channel.port1 }, [channel.port1]);
 const ok = await done;
 await writes;
 log(ok ? `TEST ZIP WRITTEN: ${written} bytes in ${((performance.now() - started) / 1000).toFixed(0)} s` : 'TEST FAILED', ok ? 'good' : 'bad');

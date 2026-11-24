@@ -36,6 +36,11 @@ game.then((g) => {
   let n = 0;
   for (const el of document.querySelectorAll('section:not([hidden]) h2 .n')) el.textContent = `${++n}. `;
   $('compile-row').hidden = !g.shaders;
+  $('movies-row').hidden = !g.movies;
+  $('audio-row').hidden = !g.audio;
+  $('reencode-note').hidden = !g.movies && !g.audio;
+  if (g.texts?.movies) $('movies-text').innerHTML = g.texts.movies;  // the game's figures, when game.json has them
+  if (g.texts?.audio) $('audio-text').innerHTML = g.texts.audio;
   create.textContent = `Create ${g.package}.zip`;
   manifest.then((m) => { $('version').textContent = `version ${m.version}`; });
 });
@@ -330,5 +335,9 @@ create.addEventListener('click', async () => {
     log(`Error: ${event.message}`, true);
     finish();
   };
-  worker.postMessage({ entries, dlc, update: update || [], compile: compileBox.checked, port: channel.port1 }, [channel.port1]);
+  // 2026-11-23: the re-encodes the page offers (game.json "movies", "audio"; vivapinata-nx-installer's, the user there:
+  // "Make sure you give option for user not to rencode as well")
+  const options = { movies: !!$('movies')?.checked, audio: !!$('audio')?.checked };
+  worker.postMessage({ entries, dlc, update: update || [], compile: compileBox.checked, options, port: channel.port1 },
+                     [channel.port1]);
 });

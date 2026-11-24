@@ -5,6 +5,7 @@ import createRenutHlslModule from './wasm/renut_hlsl.mjs';
 import createLzxModule from './wasm/lzx.mjs';
 import createXexpModule from './wasm/xexp.mjs';
 import { buildPackage } from './lib/install.js';
+import { CODECS } from './lib/lz4b.js';
 import { glslMaker, uamCompile, workerPool } from './lib/pool.js';
 
 const quiet = () => ({ print: () => {}, printErr: () => {} });
@@ -81,7 +82,7 @@ function startWorkers(script, count) {
     const w = new Worker(script, { type: 'module' });
     w.onerror = (e) => reject(new Error(`${script}: ${e.message}`));
     w.addEventListener('message', ({ data }) => {
-      if (data.ready) resolve({ w, version: data.version, post: (m, t) => w.postMessage(m, t),
+      if (data.ready) resolve({ w, version: data.version, zxcVersion: data.zxcVersion, post: (m, t) => w.postMessage(m, t),
                                 onMessage: (cb) => w.addEventListener('message', ({ data: d }) => cb(d)) });
     }, { once: true });
   })));
@@ -90,7 +91,8 @@ function startWorkers(script, count) {
 // One kind of worker as lib/install.js takes it: { run, version, stop() }.
 async function tool(script, count, wrap) {
   const workers = await startWorkers(script, count);
-  return { run: wrap(workerPool(workers)), version: workers[0].version, stop: () => workers.forEach((x) => x.w.terminate()) };
+  return { run: wrap(workerPool(workers)), version: workers[0].version, zxcVersion: workers[0].zxcVersion,
+           stop: () => workers.forEach((x) => x.w.terminate()) };
 }
 
 self.onmessage = async ({ data }) => {
@@ -110,13 +112,17 @@ self.onmessage = async ({ data }) => {
       xexp: game.shaders && game.update ? await createXexpModule(quiet()) : null,  // the title update's patch
       startGlsl: (n) => tool('./glsl_worker.js', n, glslMaker),
       startUam: (n) => tool('./uam_worker.js', n, uamCompile),
-      startLz4: (n) => tool('./lz4_worker.js', n, (pool) => (bytes, level) =>
-        pool.run({ bytes, level }, [bytes.buffer]).then((r) => r.bytes)),
+      // 2026-11-23: LZ4 and ZXC (pack_worker.js, lib/lz4b.js CODECS), and the re-encodes' decoders (lib/media.js)
+      startPack: (n) => tool('./pack_worker.js', n, (pool) => (bytes, codec) =>
+        pool.run({ bytes, codec, level: CODECS[codec].level, block: CODECS[codec].block }, [bytes.buffer]).then((r) => r.bytes)),
+      loadWmv3: async () => (await import('./wasm/wmv3.mjs')).default(quiet()),
+      loadXma: async () => (await import('./wasm/xma.mjs')).default(quiet()),
     };
     const report = await buildPackage({
       game, manifest, files: gameFiles(data.entries), dlc: gameFiles(data.dlc || []), update: gameFiles(data.update || []),
       fetchRelease, tools, sink,
       compile: data.compile !== false,
+      options: data.options || {},
       events: {
         log: (text) => postMessage({ type: 'log', text }),
         progress: (fraction) => postMessage({ type: 'progress', fraction }),

@@ -1,0 +1,77 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>media test</title>
+<!-- renut_nx_ultimate_installer (2026-11-23): the page's movie path on the served game folder, without the shaders:
+     each movie game.json's "movies" names re-encoded to H.265 (lib/movies.js) and ZXC-packed (lib/lz4b.js on
+     pack_worker.js), into a zip with both, NAME (the H.265 ASF) and NAME.lz4b, so test/check_zip.py's block reader and
+     test/movie_check.mjs can check them; and lib/media.js's reencodeInto (what lib/install.js runs) for the first movie,
+     under glue/.
+       python serve.py 8193 . --test-files <game folder> --test-out <out.zip>
+       open http://127.0.0.1:8193/test/media_browser.html
+     The title becomes DONE or FAILED. Game data: never commit or share what it writes. -->
+<pre id="out"></pre>
+<script type="module">
+import createWmv3Module from '../wasm/wmv3.mjs';
+import { canEncodeHevc, reencodeMovie } from '../lib/movies.js';
+import { CODECS, pack } from '../lib/lz4b.js';
+import { mediaSetup, reencodeInto } from '../lib/media.js';
+import { workerPool } from '../lib/pool.js';
+import { ZipWriter } from '../lib/zip.js';
+
+const out = document.getElementById('out');
+const log = (t) => { out.textContent += t + '\n'; };
+try {
+  const game = await (await fetch('../game.json')).json();
+  const list = await (await fetch('/_test_list')).json();
+  const re = new RegExp(`^(?:${game.movies.match})$`, 'i');
+  const movies = list.filter((f) => re.test(f.path));
+  log(`H.265 encoder: ${await canEncodeHevc()}; ${movies.length} movies`);
+  const cores = Math.max(1, Math.min(8, (navigator.hardwareConcurrency || 4) - 1));
+  const workers = await Promise.all(Array.from({ length: cores }, () => new Promise((resolve) => {
+    const w = new Worker('../pack_worker.js', { type: 'module' });
+    w.addEventListener('message', () => resolve({ w, post: (m, t) => w.postMessage(m, t),
+                                                     onMessage: (cb) => w.addEventListener('message', ({ data }) => cb(data)) }),
+                        { once: true });
+  })));
+  const pool = workerPool(workers);
+  const compress = (bytes, codec) =>
+    pool.run({ bytes, codec, level: CODECS[codec].level, block: CODECS[codec].block }, [bytes.buffer]).then((r) => r.bytes);
+  let written = 0;
+  const sink = {
+    async write(bytes) {
+      const w = await fetch(`/_test_write?offset=${written}`, { method: 'POST', body: bytes.slice() });
+      if (!w.ok) throw new Error(`write: HTTP ${w.status}`);
+      written += bytes.length;
+    },
+    async close() {},
+  };
+  const zip = new ZipWriter(sink);
+  const wmv3 = await createWmv3Module({ print: () => {}, printErr: () => {} });
+  const fileOf = (f) => ({ path: f.path, size: f.size, read: async (o, n) => new Uint8Array(await (await fetch(
+    `/_test/${f.path}`, { headers: { Range: `bytes=${o}-${o + n - 1}` } })).arrayBuffer()) });
+  for (const f of movies) {
+    const t0 = performance.now();
+    const file = fileOf(f);
+    const res = await reencodeMovie(await file.read(0, f.size), wmv3, { fraction: game.movies.fraction, gop: game.movies.gop });
+    if (!res.bytes) throw new Error(`${f.path} kept as WMV: ${res.why}`);
+    await zip.addBytes(f.path, res.bytes);
+    const blob = new Blob([res.bytes]);
+    const asFile = { size: blob.size, read: async (o, n) => new Uint8Array(await blob.slice(o, o + n).arrayBuffer()) };
+    const packed = await zip.addStream(`${f.path}.lz4b`, pack(asFile, compress, { codec: 'zxc', inFlight: cores * 4 }));
+    log(`${f.path}: ${f.size} -> ${res.bytes.length} (H.265, ${res.kbps} kbit/s) -> ${packed} (ZXC), ` +
+        `${((performance.now() - t0) / 1000).toFixed(0)} s`);
+  }
+  // what lib/install.js runs, for the first movie
+  const setup = await mediaSetup({ movies: game.movies }, { movies: true }, { loadWmv3: async () => wmv3 }, log);
+  const glue = await reencodeInto(zip, 'glue', fileOf(movies[0]), 'hevc', { game, setup, compress, cores, audioFiles: [] });
+  log(`reencodeInto: ${JSON.stringify({ name: glue.name, size: glue.size, why: glue.why })}`);
+  if (!glue.name) throw new Error(`reencodeInto kept it: ${glue.why}`);
+  await zip.finish();
+  workers.forEach((x) => x.w.terminate());
+  log(`zip ${written} bytes`);
+  document.title = 'DONE';
+} catch (e) {
+  log(`FAILED: ${e.message || e}`);
+  document.title = 'FAILED';
+}
+</script>

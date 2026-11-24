@@ -3,14 +3,66 @@
   "package": "katamari-nx",
   "nro": "katamari-nx.nro",
   "shaders": true,
-  "lz4": ["d0[2-5]\\.dat"],
-  "skip": ["\\$SystemUpdate/.*"],
-  "needs": ["d02\\.dat", "d03\\.dat", "d04\\.dat", "d05\\.dat"],
+  "asis": [
+    "default\\.xex"
+  ],
+  "min_pack_size": 4096,
+  "zxc": [
+    "data/movie/.*\\.wmv"
+  ],
+  "lz4": [
+    ".*"
+  ],
+  "skip": [
+    "\\$SystemUpdate/.*"
+  ],
+  "needs": [
+    "d02\\.dat",
+    "d03\\.dat",
+    "d04\\.dat",
+    "d05\\.dat"
+  ],
   "dlc": true,
+  "movies": {
+    "match": "data/movie/.*\\.wmv",
+    "fraction": 0.35,
+    "gop": 120,
+    "zxc": true
+  },
+  "audio": {
+    "match": "data/sound/.*\\.nps",
+    "container": "riff",
+    "bitrates": [
+      {
+        "match": "data/sound/stream/.*",
+        "stereo": 64000,
+        "mono": 32000
+      },
+      {
+        "match": ".*",
+        "stereo": 128000,
+        "mono": 64000
+      }
+    ],
+    "rates": {
+      "48000": 48000,
+      "44100": 48000,
+      "24000": 24000
+    },
+    "near_hz": 4,
+    "ids": {
+      "top": 75,
+      "pack_bits": 16
+    },
+    "pack": "lz4",
+    "min_saving": 0.05
+  },
   "texts": {
     "game": "Your Xbox 360 disc of Beautiful Katamari as an <code>.iso</code>, or the folder it was extracted to (with <code>default.xex</code> and <code>d02.dat</code>-<code>d05.dat</code>).",
     "dlc": "The game's downloadable content, as the Xbox 360 packages you have (<code>LIVE</code> or <code>PIRS</code> files), or a folder of them. The game installs them at its first start.",
     "settings": "The game writes its settings file, <code>katamari.toml</code>, at its first start.",
-    "footer": "Beautiful Katamari is a trademark of Bandai Namco Entertainment. Not affiliated with or endorsed by Bandai Namco, Microsoft or Nintendo."
+    "footer": "Beautiful Katamari is a trademark of Bandai Namco Entertainment. Not affiliated with or endorsed by Bandai Namco, Microsoft or Nintendo.",
+    "movies": "Re-encode the 6 movies to H.265 (recommended: 302 MB become about 115 MB, and the Switch's video hardware plays them). Needs a browser with an H.265 encoder (Chrome or Edge on a recent graphics card); without one, or unticked, the original WMV movies are kept.",
+    "audio": "Re-encode the music and voices to Opus (recommended: music 128 kbit/s, voices 32 kbit/s). Needs a browser with an Opus encoder (Chrome, Edge or Firefox); without one, or unticked, the original XMA sounds are kept."
   }
 }

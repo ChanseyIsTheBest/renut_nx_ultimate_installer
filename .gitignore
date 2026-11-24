@@ -5,6 +5,7 @@ __pycache__/
 node_modules/
 wasm/src/*/build/
 test/out_*
+out/
 *.lz4b
 *.zip
 # Pyodide's standard library: the page loads it (blur-nx-installer de297ce found it never committed: shaders failed)
