@@ -33,6 +33,9 @@ import zipfile
 
 import lz4.block
 
+# The names the base reads as stand-ins (lib/vfs_index.js standIn): a file of the game folder with one is copied as it is.
+STAND_IN = re.compile(r'\.(lz4b|xmop|xmo|opcm|hevc)$', re.I)
+
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 READER_TEST = os.environ.get('LZ4B_TEST', 'D:/ridge racer 6/rr6-nx/out/test_lz4_blocks.exe')
 
@@ -200,7 +203,7 @@ def main():
                     raise SystemExit(f'FAIL: {entry} is not the title update file {rel}')
                 placed.add(entry)
             print(f'title update: {len(want)} files right (default.xexp in game_root/, {len(want) - 1} in update/)')
-        count = packed_in = packed_out = 0
+        count = packed_in = packed_out = as_is = 0
         for dirpath, _, files in os.walk(game):
             for f in sorted(files):
                 original = os.path.join(dirpath, f)
@@ -212,6 +215,15 @@ def main():
                 count += 1
                 entry = root + 'game_root/' + rel
                 size_o = os.path.getsize(original)
+                if STAND_IN.search(rel):
+                    # 2026-11-25 (pacman-nx's finding): a stand-in already made (a game folder the page made before,
+                    # given back as the source) is copied as it is, never packed or re-encoded again
+                    if any(e in names for e in (entry + '.lz4b', entry + '.xmop', entry + '.xmop.lz4b')):
+                        raise SystemExit(f'FAIL: {rel} is already a stand-in but was packed or re-encoded again')
+                    if entry_sha(z, entry) != file_sha(original):
+                        raise SystemExit(f'FAIL: {entry} differs from {rel}')
+                    as_is += 1
+                    continue
                 if audio and fits([audio], rel):
                     found = [e for e in (entry + '.xmop.lz4b', entry + '.xmop') if e in names]
                     if found:
@@ -251,7 +263,8 @@ def main():
                 elif entry_sha(z, entry) != file_sha(original):
                     raise SystemExit(f'FAIL: {entry} differs from {rel}')
         print(f'game_root: {count} files right' +
-              (f'; packed {packed_in / 1048576:.0f} MB -> {packed_out / 1048576:.0f} MB' if packed_in else ''))
+              (f'; packed {packed_in / 1048576:.0f} MB -> {packed_out / 1048576:.0f} MB' if packed_in else '') +
+              (f'; {as_is} already-made stand-ins copied as they are' if as_is else ''))
         for kind, (i, o) in reencoded.items():
             if i:
                 print(f're-encoded ({kind}): {i / 1048576:.1f} MB -> {o / 1048576:.1f} MB ({o / i * 100:.1f} %)')
